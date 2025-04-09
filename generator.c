@@ -35,6 +35,9 @@ int main()
 		root = chordRoot[0];
 		quality = chordQuality[0];
 
+		/**
+		 * Generates basic shell voicing
+		 */
 		if (quality == 0)
 		{
 			bottomShell = root + 4;
@@ -49,6 +52,24 @@ int main()
 		{
 			bottomShell = root + 3;
 			topShell = root + 10;
+		}
+
+		/**
+		 * Inverts shell if too high
+		 */
+		if (topShell > 11)
+		{
+			topShell = topShell - 12;
+		}
+		if (bottomShell > 11)
+		{
+			bottomShell = bottomShell - 12;
+		}
+		if (bottomShell > topShell)
+		{
+			int temp = bottomShell;
+			bottomShell = topShell;
+			topShell = temp;
 		}
 	}
 
