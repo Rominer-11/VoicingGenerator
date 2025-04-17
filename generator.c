@@ -1,5 +1,6 @@
 #include <stdio.h>
-
+#include <stdlib.h>
+#include <string.h>
 #define BUFFERSIZE 64
 
 void welcome()
@@ -11,24 +12,35 @@ void welcome()
 	printf("Type your chord root followed by quality.\n");
 }
 
+const char * toNote(int number)
+{
+	char * permaNote = malloc(BUFFERSIZE);
+	char note[] = "yay!";
+	strcpy(permaNote, note);
+	return permaNote;
+}
+
 int main()
 {
 	/*char chordRoot[BUFFERSIZE];*/
 	int chordRoot[1];
 	int chordQuality[1];	
 	int root, quality, bottomShell, topShell, ninth, fifth;
+	int chord[4];
 
 	while (1 == 1)
 	{
 		system("clear");
 		
 		welcome();
+		printf("%s", toNote(1));
+		printf("Current voicing:\n");
+		int i;
+		for (i = 3; i >= 0; --i)
+		{
+			printf("%i \n", chord[i]);
+		}	
 
-		printf("Root: %i \n", root);
-		printf("Top Shell: %i \n", topShell);
-		printf("Bot Shell: %i \n", bottomShell);
-		printf("Fifth: %i \n", fifth);
-		printf("Ninth: %i \n", ninth);
 		printf("For now, enter chord root as number, starting on 1 = C and ending on 11 = B\n");
 		printf("Same with quality, 0 = major, 1= dom, 2 = min, 3 = halfdim, 4 = full dim");
 		printf("> ");
@@ -92,6 +104,18 @@ int main()
 			fifth = fifth + 12;
 		}
 
+		chord[0] = bottomShell;
+		if (fifth < ninth)
+		{
+			chord[1] = fifth;
+			chord[3] = ninth;
+		}
+		else
+		{
+			chord[1] = ninth;
+			chord[3] = fifth;
+		}
+		chord[2] = topShell;
 	}
 
 	return 0;
