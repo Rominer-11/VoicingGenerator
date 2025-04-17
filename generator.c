@@ -16,7 +16,7 @@ int main()
 	/*char chordRoot[BUFFERSIZE];*/
 	int chordRoot[1];
 	int chordQuality[1];	
-	int root, quality, bottomShell, topShell;
+	int root, quality, bottomShell, topShell, ninth, fifth;
 
 	while (1 == 1)
 	{
@@ -27,6 +27,8 @@ int main()
 		printf("Root: %i \n", root);
 		printf("Top Shell: %i \n", topShell);
 		printf("Bot Shell: %i \n", bottomShell);
+		printf("Fifth: %i \n", fifth);
+		printf("Ninth: %i \n", ninth);
 		printf("For now, enter chord root as number, starting on 1 = C and ending on 11 = B\n");
 		printf("Same with quality, 0 = major, 1= dom, 2 = min, 3 = halfdim, 4 = full dim");
 		printf("> ");
@@ -71,6 +73,25 @@ int main()
 			bottomShell = topShell;
 			topShell = temp;
 		}
+
+		/**
+		 * Checks to make sure not half-dim or full-dim
+		 */
+		if (!(quality > 2))
+		{
+			ninth = root + 2;
+			fifth = root + 7;
+		}
+
+		if (ninth < bottomShell)
+		{
+			ninth = ninth + 12;
+		}
+		if (fifth < bottomShell)
+		{
+			fifth = fifth + 12;
+		}
+
 	}
 
 	return 0;
