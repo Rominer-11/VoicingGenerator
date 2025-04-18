@@ -14,10 +14,58 @@ void welcome()
 
 const char * toNote(int number)
 {
-	char * permaNote = malloc(BUFFERSIZE);
-	char note[] = "yay!";
-	strcpy(permaNote, note);
-	return permaNote;
+	char * note = malloc(BUFFERSIZE);
+
+	if (number % 12 == 1)
+	{
+		strcpy(note, "C");
+	}
+	else if (number % 12 == 2)
+	{
+		strcpy(note, "Db");
+	}
+	else if (number % 12 == 3)
+	{
+		strcpy(note, "D");
+	}
+	else if (number % 12 == 4)
+	{
+		strcpy(note, "Eb");
+	}
+	else if (number % 12 == 5)
+	{
+		strcpy(note, "E");
+	}
+	else if (number % 12 == 6)
+	{
+		strcpy(note, "F");
+	}
+	else if (number % 12 == 7)
+	{
+		strcpy(note, "Gb");
+	}
+	else if (number % 12 == 8)
+	{
+		strcpy(note, "G");
+	}
+	else if (number % 12 == 9)
+	{
+		strcpy(note, "Ab");
+	}
+	else if (number % 12 == 10)
+	{
+		strcpy(note, "A");
+	}
+	else if (number % 12 == 11)
+	{
+		strcpy(note, "Bb");
+	}
+	else if (number % 12 == 0)
+	{
+		strcpy(note, "B");
+	}
+
+	return note;
 }
 
 int main()
@@ -33,12 +81,11 @@ int main()
 		system("clear");
 		
 		welcome();
-		printf("%s", toNote(1));
 		printf("Current voicing:\n");
 		int i;
 		for (i = 3; i >= 0; --i)
 		{
-			printf("%i \n", chord[i]);
+			printf("%s \n", toNote(chord[i]));
 		}	
 
 		printf("For now, enter chord root as number, starting on 1 = C and ending on 11 = B\n");
