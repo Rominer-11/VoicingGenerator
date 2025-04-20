@@ -12,6 +12,62 @@ void welcome()
 	printf("Type your chord root followed by quality.\n");
 }
 
+int toNumber(char * note)
+{
+	int number;
+
+	if (note == "C")
+	{
+		number = 1;
+	}
+	else if (note == "Db")
+	{
+		number = 2;
+	}
+	else if (note == "D")
+	{
+		number = 3;
+	}
+	else if (note == "Eb")
+	{
+		number = 4;
+	}
+	else if (note == "E")
+	{
+		number = 5;
+	}
+	else if (note == "F")
+	{
+		number = 6;
+	}
+	else if (note == "Gb")
+	{
+		number = 7;
+	}
+	else if (note == "G")
+	{
+		number = 8;
+	}
+	else if (note == "Ab")
+	{
+		number = 9;
+	}
+	else if (note == "A")
+	{
+		number = 10;
+	}
+	else if (note == "Bb")
+	{
+		number = 11;
+	}
+	else if (note == "B")
+	{
+		number = 12;
+	}
+	
+	return number;
+}
+
 const char * toNote(int number)
 {
 	char * note = malloc(BUFFERSIZE);
@@ -71,8 +127,8 @@ const char * toNote(int number)
 int main()
 {
 	/*char chordRoot[BUFFERSIZE];*/
-	int chordRoot[1];
-	int chordQuality[1];	
+	char chordRoot[BUFFERSIZE];
+	int chordQuality[2];	
 	int root, quality, bottomShell, topShell, ninth, fifth;
 	int chord[4];
 
@@ -91,9 +147,9 @@ int main()
 		printf("For now, enter chord root as number, starting on 1 = C and ending on 11 = B\n");
 		printf("Same with quality, 0 = major, 1= dom, 2 = min, 3 = halfdim, 4 = full dim");
 		printf("> ");
-		scanf("%i %i", chordRoot, chordQuality);
+		scanf("%s %i", chordRoot, chordQuality);
 	
-		root = chordRoot[0];
+		root = toNumber(chordRoot);
 		quality = chordQuality[0];
 
 		/**
